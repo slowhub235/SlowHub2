@@ -1,0 +1,49 @@
+
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("Slow Hub", "DarkTheme")
+
+--Main
+local Main = Window:NewTab("Main")
+local MainSection = Main:NewSection("Auto Parry")
+
+
+MainSection:NewButton("Auto Parry", "Turns on Auto Parry", function()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/1f0yt/community/main/RedCircleBlock"))()
+end)
+
+
+MainSection:NewButton("Auto Spam", "Auto Spams", function()
+	print (Clicked)
+end)
+
+
+--misc
+local Misc = Window:NewTab("misc")
+local MiscSection = Misc:NewSection("toggles/buttons")
+
+
+MiscSection:NewToggle("day/night", "changes day time", function(state)
+    if state then
+        loadstring(game:HttpGet("https://cdn.wearedevs.net/scripts/Night%20Time%20Toggle.txt"))()
+    else
+        loadstring(game:HttpGet("https://cdn.wearedevs.net/scripts/Night%20Time%20Toggle.txt"))()
+    end
+end)
+
+MiscSection:NewButton("Esp", "Draws boxes around other players", function()
+    loadstring(game:HttpGet("https://cdn.wearedevs.net/scripts/WRD%20ESP.txt"))()
+end)
+
+MiscSection:NewButton("inf yield", "fun tool to use", function()
+    loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'),true))()
+end)
+
+
+
+local Legit = Window:NewTab("Legit Stuff")
+local LegitSection = Legit:NewSection("Trigger Bot")
+
+
+LegitSection:NewButton(" Trigger Bot ", "clicks when ball is close to you", function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/SpiderScriptRB/Blade-ball-OP-/refs/heads/main/Protected_3291800768430903.txt'))()
+end)
