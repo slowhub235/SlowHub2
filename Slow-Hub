@@ -2,6 +2,21 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 local Window = Library.CreateLib("Slow Hub", "DarkTheme")
 
+
+local Info = Window:NewTab("Info")
+local InfoSection = Info:NewSection("Information")
+
+
+InfoSection:NewLabel("This Script Was Made By @hgihon_drugs.")
+InfoSection:NewLabel("By Help Of @burgerwydd")
+
+
+InfoSection:NewButton("Copy Our Discord Link", "copy the Discord server link", function()
+    setclipboard("https://discord.gg/CmjFBBQcWU")
+    print("Link copied to clipboard!")
+end)
+
+
 --Main
 local Main = Window:NewTab("Main")
 local MainSection = Main:NewSection("Auto Parry")
@@ -12,9 +27,51 @@ MainSection:NewButton("Auto Parry", "Turns on Auto Parry", function()
 end)
 
 
-MainSection:NewButton("Auto Spam", "Auto Spams", function()
-	print (Clicked)
+MainSection:NewButton("X To Spam", "Auto Spams", function()
+    local UserInputService = game:GetService("UserInputService")
+
+local CLICKS_PER_SECOND = 10000 -- You can change this to 100 if needed
+local CLICK_INTERVAL = 100 / CLICKS_PER_SECOND
+
+local holdingX = false
+
+-- Replace this with your actual clicking logic
+local function simulateClick()
+    local function leftclick()
+VirtualInputManager:SendMouseButtonEvent(0, 0, 0, true, game, 0)
+end
+end
+
+-- Start the auto-clicking loop
+local function startClicking()
+    task.spawn(function()
+        while holdingX do
+            simulateClick()
+            task.wait(CLICK_INTERVAL)
+        end
+    end)
+end
+
+-- Input detection
+UserInputService.InputBegan:Connect(function(input, gameProcessed)
+    if not gameProcessed and input.KeyCode == Enum.KeyCode.X then
+        if not holdingX then
+            holdingX = true
+            startClicking()
+        end
+    end
 end)
+
+UserInputService.InputEnded:Connect(function(input, gameProcessed)
+    if input.KeyCode == Enum.KeyCode.X then
+        holdingX = false
+    end
+end)
+
+end)
+
+
+MainSection:NewLabel("Press X To Enable/Disable Auto Spam")
 
 
 --misc
@@ -40,7 +97,7 @@ end)
 
 
 
-local Legit = Window:NewTab("Legit Stuff")
+local Legit = Window:NewTab("Trigger Bot")
 local LegitSection = Legit:NewSection("Trigger Bot")
 
 
